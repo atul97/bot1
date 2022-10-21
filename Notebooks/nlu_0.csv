@@ -1,0 +1,40 @@
+﻿intent,examples
+greet   ,hey
+greet,hello
+greet,hi     
+greet,hello there
+greet,good morning
+goodbye ,good afternoon
+goodbye ,      cu 
+goodbye ,good by
+goodbye ,cee you later 
+goodbye ,good night
+affirm,yes
+affirm,y
+affirm,indeed
+affirm,of course
+affirm,that sounds good
+deny,no
+deny,n
+deny,never
+deny,I don't think so
+deny,don't like that
+mood_great,perfect
+mood_great,great
+mood_great,amazing
+mood_great,feeling like a king
+mood_great,wonderful
+mood_happy,my day was horrible
+mood_happy,I am sad
+mood_happy,I don't feel very well
+mood_happy,I am disappointed
+mood_happy,super sad
+bot_challenge,are you a human?
+bot_challenge,am I talking to a bot?
+bot_challenge,am I talking to a human?
+request_restaurant,show me a restaurant?
+request_restaurant,available restaurant?
+request_restaurant,please show me a restaurant?
+stop ,stop?
+stop ,quit?
+stop ,halt?

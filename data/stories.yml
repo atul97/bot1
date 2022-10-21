@@ -1,0 +1,95 @@
+version: "2.0"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet 
+  - action: action_user_name ## show all user
+  - action: uname_form
+  - action: utter_main_menu
+
+- story: breakdown_visit
+  steps:
+  - intent: breakdown_visit
+  - action: action_breakdown_visit
+  - action: orderid_form
+  - action: action_orderid
+  - action: utter_post_solution_menu 
+
+- story: check_availability
+  steps:
+  - intent: check_availability
+  - action: action_material_details 
+  - action: materialid_form
+  - action: action_material_availability ## Loop required for more products after consent
+  - action: utter_another_spare
+  - intent: affirm
+  - action: action_material_details 
+
+- story: check_availability_2
+  steps:
+  - intent: check_availability
+  - action: action_material_details 
+  - action: materialid_form
+  - action: action_material_availability
+  - action: utter_another_spare
+  - intent: deny
+  - action: utter_post_solution_menu 
+
+- story: steps_to_place_an_order
+  steps:
+  - intent: steps_to_place_an_order
+  - action: utter_steps_to_place_order
+  - action: utter_post_solution_menu
+
+- story: order_status
+  steps:
+  - intent: order_status
+  - action: action_all_order_status
+  - action: orderid_form
+  - action: action_order_status
+  - action: utter_post_solution_menu
+
+- story: explore_more
+  steps:
+  - intent: explore_more
+  - action: utter_main_menu
+
+# - story: sad path 1
+#   steps:
+#   - intent: greet
+#   - action: action_utter_Fallback_Menu
+#   - intent: mood_unhappy
+#   - action: utter_cheer_up
+#   - action: utter_did_that_help
+#   - intent: affirm
+#   - action: utter_happy
+
+# - story: sad path 2
+#   steps:
+#   - intent: greet
+#   - action: action_utter_Fallback_Menu
+#   - intent: mood_unhappy
+#   - action: utter_cheer_up
+#   - action: utter_did_that_help
+#   - intent: deny
+#   - action: utter_goodbye
+
+
+# - story: Main Menu
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - action: name_form
+#   - action: main_menu
+
+# - story: breakdown_visit
+#   steps:
+#   - intent: breakdown_visit
+#   - action: action_breakdown_visit_details
+#   - action: order_id_form
+#   - action: action_order_details
+#   - intent: show_more
+#   - action: action_more_info

@@ -1,0 +1,122 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - mood_happy
+  - breakdown_visit
+  - check_availability
+  - steps_to_place_an_order
+  - order_status
+  - explore_more
+
+entities:
+- uname
+- orderid
+- materialid
+
+slots:
+  uname:
+    type: text
+    influence_conversation: false
+  orderid:
+    type: text
+    influence_conversation: false
+  materialid:
+    type: text
+    influence_conversation: false
+
+
+responses:
+  utter_greet:
+  - text: |
+      - Hi, I am a virtual assistant from Acme here to help you.
+      - May I know your name?
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_another_spare:
+  - buttons:
+    - payload: affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: "Would you like to check availability for another spare?"
+
+  # utter_main_menu:
+  # - text: Hi {uname}. I can help you with.
+
+  utter_main_menu:
+  - buttons:
+    - payload: Breakdown visit
+      title: Info on your next breakdown visit
+    - payload: Check Availability
+      title: Check availability of required spares
+    - payload: Steps to Place an Order
+      title: Stepwise assistance on how to place an order
+    - payload: Check Order Status
+      title: Help you get information on your order
+    text: Hi {uname},I can help you with.
+
+  utter_steps_to_place_order:
+  - text: "Check this video"
+    attachment: { "type":"video", "payload":{ "src": "https://youtube.com/embed/9C1Km6xfdMA" } }
+
+  utter_post_solution_menu:
+  - buttons:
+    - payload: explore_more
+      title: Explore More
+    text: Is there anything else I can help you with?
+
+actions:
+- action_breakdown_visit
+- action_orderid
+- action_material_details
+- action_material_availability
+- action_all_order_status
+- action_order_status
+- action_user_name
+
+forms:
+  uname_form:
+    required_slots:  
+      uname:
+      - entity: uname
+        type: from_text
+  orderid_form:
+    required_slots:  
+      orderid:
+      - entity: orderid
+        type: from_text
+  materialid_form:
+    required_slots:  
+      materialid:
+      - entity: materialid
+        type: from_text    
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+
+

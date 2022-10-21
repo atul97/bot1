@@ -1,0 +1,263 @@
+version: "2.0" 
+ 
+nlu: 
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: Home
+  examples: |
+    - Main Menu
+    - main_menu
+    - Menu
+    - Menu Main
+    - menu
+    - restart
+    - Restart
+    - Home
+    - back to Home
+
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: quit
+  examples: |
+    - quit
+    - Quit
+    - stop
+
+- intent: Account_Management
+  examples: |
+    - Account_Management
+    - Account Management
+    - Lock
+    - Unlock
+    - Password
+    - reset
+    - Forgot Password
+    - Unable to login
+    - login
+
+- intent: Reset_Password
+  examples: |
+    - Reset_Password
+    - Reset Password
+    - Password Reset
+    - Reset Password
+
+- intent: Account_Unlock
+  examples: |
+    - Account_Unlock
+    - Account Unlock
+    - AccountUnlock
+    - Account Locked
+
+- intent: Ticket_Management
+  examples: |
+    - Ticket_Management
+    - Ticket Management
+    - ticket
+    - ticket log
+    - log ticket
+    - i want to log ticket
+    - i want to check ticket
+
+- intent: raise_ticket
+  examples: |
+    - raise_ticket
+    - Raise Ticket
+
+- intent: ticket_status
+  examples: |
+    - ticket status
+    - Ticket status
+    - ticket_status
+
+- intent: Software_Deployment
+  examples: |
+    - Software_Deployment
+    - Software Deployment
+    - SoftwareDeployment
+    - install Skype
+    - install Software
+    - install Chrome
+    - install driver
+    - installation
+    - Software install
+
+- intent: Troubleshoot
+  examples: |
+    - Troubleshoot
+    - Wifi
+    - Wi-Fi
+    - Browser
+    - Internet Browser
+    - internet
+    - connectivity
+    - connection
+    - Cache
+    - cookies
+    - junk
+    - space
+    - disk
+    - clean
+    - Software Troubleshoot
+    - SoftwareTroubleshoot
+    - System Troubleshoot
+
+- intent: WiFi_Troubleshoot
+  examples: |
+    - Wifi Troubleshoot
+    - WiFi_Troubleshoot
+    - Wi-Fi Troubleshoot
+
+- intent: Camera_Troubleshoot
+  examples: |
+    - Camera Troubleshoot
+    - Camera_Troubleshoot
+    - Troubleshoot Camera
+
+- intent: Microphone_Troubleshoot
+  examples: |
+    - Microphone Troubleshoot
+    - Microphone_Troubleshoot
+    - Troubleshoot Microphone
+
+- intent: Clear_Browser_Cache
+  examples: |
+    - Clear_Browser_Cache
+    - Clear Browser Cache
+    - ClearBrowserCache
+    - Cache
+    - Browser Cookies
+    - Browser issue
+    - Browser
+    - Unable to browse internet
+    - are you a bot?
+
+- intent: Clear_Chrome_Cache
+  examples: |
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: Clear_Edge_Cache
+  examples: |
+    - Clear_Edge_Cache
+    - Clear Edge Cache
+    - ClearEdgeCache
+
+- intent: Clear_Mozilla_Cache
+  examples: |
+    - Clear_Mozilla_Cache
+    - Clear Mozilla Cache
+    - ClearMozillaCache
+
+- intent: Remove_Space
+  examples: |
+    - Remove Space
+    - RemoveSpace
+    - Remove_Space
+
+- intent: Printer_Management
+  examples: |
+    - Printer Management
+    - Printer_Management
+    - PrinterManagement
+    - Printer Issue
+
+- intent: Collect_Feedback
+  examples: |
+    - Collect_Feedback
+    - Collect Feedback
+    - CollectFeedback
+    - Feedback
+
+- intent: Not_Satisfied
+  examples: |
+    - Not Satisfied
+    - Not_Satisfied
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+

@@ -1,0 +1,177 @@
+intent,examples
+greet,hey
+greet,hello
+greet,hi
+greet,hello there
+greet,good morning
+greet,good evening
+greet,moin
+greet,hey there
+greet,let's go
+greet,hey dude
+greet,goodmorning
+greet,goodevening
+greet,good afternoon
+Home,Main Menu
+Home,main_menu
+Home,Menu
+Home,Menu Main
+Home,menu
+Home,restart
+Home,Restart
+Home,Home
+Home,back to Home
+goodbye,good afternoon
+goodbye,cu
+goodbye,good by
+goodbye,cee you later
+goodbye,good night
+goodbye,bye
+goodbye,goodbye
+goodbye,have a nice day
+goodbye,see you around
+goodbye,bye bye
+goodbye,see you later
+affirm,yes
+affirm,y
+affirm,indeed
+affirm,of course
+affirm,that sounds good
+affirm,correct
+deny,no
+deny,n
+deny,never
+deny,I don't think so
+deny,don't like that
+deny,no way
+deny,not really
+quit,quit
+quit,Quit
+quit,stop
+Account_Management,Account_Management
+Account_Management,Account Management
+Account_Management,Lock
+Account_Management,Unlock
+Account_Management,Password
+Account_Management,reset
+Account_Management,Forgot Password
+Account_Management,Unable to login
+Account_Management,login
+Reset_Password,Reset_Password
+Reset_Password,Reset Password
+Reset_Password,Password Reset
+Reset_Password,Reset Password
+Account_Unlock,Account_Unlock
+Account_Unlock,Account Unlock
+Account_Unlock,AccountUnlock
+Account_Unlock,Account Locked
+Ticket_Management,Ticket_Management
+Ticket_Management,Ticket Management
+Ticket_Management,ticket
+Ticket_Management,ticket log
+Ticket_Management,log ticket
+Ticket_Management,i want to log ticket
+Ticket_Management,i want to check ticket
+raise_ticket,raise_ticket
+raise_ticket,Raise Ticket
+ticket_status,ticket status
+ticket_status,Ticket status
+ticket_status,ticket_status
+Software_Deployment,Software_Deployment
+Software_Deployment,Software Deployment
+Software_Deployment,SoftwareDeployment
+Software_Deployment,install Skype
+Software_Deployment,install Software
+Software_Deployment,install Chrome
+Software_Deployment,install driver
+Software_Deployment,installation
+Software_Deployment,Software install
+Troubleshoot,Troubleshoot
+Troubleshoot,Wifi
+Troubleshoot,Wi-Fi
+Troubleshoot,Browser
+Troubleshoot,Internet Browser
+Troubleshoot,internet
+Troubleshoot,connectivity
+Troubleshoot,connection
+Troubleshoot,Cache
+Troubleshoot,cookies
+Troubleshoot,junk
+Troubleshoot,space
+Troubleshoot,disk
+Troubleshoot,clean
+Troubleshoot,Software Troubleshoot
+Troubleshoot,SoftwareTroubleshoot
+Troubleshoot,System Troubleshoot
+WiFi_Troubleshoot,Wifi Troubleshoot
+WiFi_Troubleshoot,WiFi_Troubleshoot
+WiFi_Troubleshoot,Wi-Fi Troubleshoot
+Camera_Troubleshoot,Camera Troubleshoot
+Camera_Troubleshoot,Camera_Troubleshoot
+Camera_Troubleshoot,Troubleshoot Camera
+Microphone_Troubleshoot,Microphone Troubleshoot
+Microphone_Troubleshoot,Microphone_Troubleshoot
+Microphone_Troubleshoot,Troubleshoot Microphone
+Clear_Browser_Cache,Clear_Browser_Cache
+Clear_Browser_Cache,Clear Browser Cache
+Clear_Browser_Cache,ClearBrowserCache
+Clear_Browser_Cache,Cache
+Clear_Browser_Cache,Browser Cookies
+Clear_Browser_Cache,Browser issue
+Clear_Browser_Cache,Browser
+Clear_Browser_Cache,Unable to browse internet
+Clear_Browser_Cache,are you a bot?
+Clear_Chrome_Cache,are you a human?
+Clear_Chrome_Cache,am I talking to a bot?
+Clear_Chrome_Cache,am I talking to a human?
+Clear_Edge_Cache,Clear_Edge_Cache
+Clear_Edge_Cache,Clear Edge Cache
+Clear_Edge_Cache,ClearEdgeCache
+Clear_Mozilla_Cache,Clear_Mozilla_Cache
+Clear_Mozilla_Cache,Clear Mozilla Cache
+Clear_Mozilla_Cache,ClearMozillaCache
+Remove_Space,Remove Space
+Remove_Space,RemoveSpace
+Remove_Space,Remove_Space
+Printer_Management,Printer Management
+Printer_Management,Printer_Management
+Printer_Management,PrinterManagement
+Printer_Management,Printer Issue
+Collect_Feedback,Collect_Feedback
+Collect_Feedback,Collect Feedback
+Collect_Feedback,CollectFeedback
+Collect_Feedback,Feedback
+Not_Satisfied,Not Satisfied
+Not_Satisfied,Not_Satisfied
+mood_great,perfect
+mood_great,great
+mood_great,amazing
+mood_great,feeling like a king
+mood_great,wonderful
+mood_great,I am feeling very good
+mood_great,I am great
+mood_great,I am amazing
+mood_great,I am going to save the world
+mood_great,super stoked
+mood_great,extremely good
+mood_great,so so perfect
+mood_great,so good
+mood_great,so perfect
+mood_unhappy,my day was horrible
+mood_unhappy,I am sad
+mood_unhappy,I don't feel very well
+mood_unhappy,I am disappointed
+mood_unhappy,super sad
+mood_unhappy,I'm so sad
+mood_unhappy,sad
+mood_unhappy,very sad
+mood_unhappy,unhappy
+mood_unhappy,not good
+mood_unhappy,not very good
+mood_unhappy,extremly sad
+mood_unhappy,so saad
+mood_unhappy,so sad
+bot_challenge,are you a bot?
+bot_challenge,are you a human?
+bot_challenge,am I talking to a bot?
+bot_challenge,am I talking to a human?
