@@ -57,6 +57,16 @@ stories:
   - intent: explore_more
   - action: utter_main_menu
 
+
+- story: test
+  steps:
+  - intent: test
+  - action: action_collapsible
+
+- story: collapsible
+  steps:
+  - intent: collapse
+  - action: action_collapsible
 # - story: sad path 1
 #   steps:
 #   - intent: greet

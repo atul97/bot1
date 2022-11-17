@@ -19,66 +19,8 @@ import requests
 import json
 
 
-# from configparser import ConfigParser
-  
-  
-# def config(filename='database.ini', section='postgresql'):
-#     # create a parser
-#     parser = ConfigParser()
-#     # read config file
-#     parser.read(filename)
-  
-#     # get section, default to postgresql
-#     db = {}
-#     if parser.has_section(section):
-#         params = parser.items(section)
-#         for param in params:
-#             db[param[0]] = param[1]
-#     else:
-#         raise Exception('Section {0} not found in the {1} file'.format(section, filename))
-  
-#     return db
-
-# import psycopg2
-# from config import config
-  
-# def connect():
-#     """ Connect to the PostgreSQL database server """
-#     conn = None
-#     try:
-#         # read connection parameters
-#         params = config()
-  
-#         # connect to the PostgreSQL server
-#         print('Connecting to the PostgreSQL database...')
-#         conn = psycopg2.connect(**params)
-          
-#         # create a cursor
-#         cur = conn.cursor()
-          
-#     # execute a statement
-#         print('PostgreSQL database version:')
-#         cur.execute('SELECT version()')
-  
-#         # display the PostgreSQL database server version
-#         db_version = cur.fetchone()
-#         print(db_version)
-         
-#     # close the communication with the PostgreSQL
-#         cur.close()
-#     except (Exception, psycopg2.DatabaseError) as error:
-#         print(error)
-#     finally:
-#         if conn is not None:
-#             conn.close()
-#             print('Database connection closed.')
-
-
 import psycopg2
-# conn = psycopg2.connect(database ="gfgdb", user = "gfguser",
-#                         password = "passgeeks", host = "52.33.0.1", 
-#                         port = "5432")
-  
+
 class ActionUserName(Action):
 
     def name(self) -> Text:
@@ -90,6 +32,7 @@ class ActionUserName(Action):
         conn = None
         try:
             print("-----------")
+            print(tracker.get_latest_input_channel())
             # uname = tracker.get_slot("uname")
             conn = psycopg2.connect(database ="rasa", user = "postgres",
                         password = "123456", host = "localhost", 
@@ -121,7 +64,10 @@ class ActionUserName(Action):
         if len(rows)==0:
             dispatcher.utter_message(text=f"No user found")
         else:
-            dispatcher.utter_message(text="Please select user",buttons=buttons)
+            if tracker.get_latest_input_channel()=="twilio":
+                dispatcher.utter_message(text="Please write user name")
+            else:
+                dispatcher.utter_message(text="Please select user",buttons=buttons)
 
         return []
 
@@ -167,7 +113,10 @@ class ActionBreakdownVisit(Action):
         if len(rows)==0:
             dispatcher.utter_message(text=f"No details found for user: {uname} ")
         else:
-            dispatcher.utter_message(text="Here are your appointment details:",buttons=buttons)
+            if tracker.get_latest_input_channel()=="twilio":
+                dispatcher.utter_message(text="Please write user name")
+            else:                
+                dispatcher.utter_message(text="Here are your appointment details:",buttons=buttons)
 
         return []
 
@@ -215,7 +164,7 @@ class ActionOrder(Action):
                 print('Database connection closed.')
         dispatcher.utter_message(text=text)
 
-        return []
+        return [SlotSet('orderid',None)]
 
 class ActionMaterialDetails(Action):
 
@@ -297,7 +246,7 @@ class ActionMaterialAvailability(Action):
                 print('Database connection closed.')
         dispatcher.utter_message(text=text)
 
-        return []
+        return [SlotSet('materialid',None)]
 
 class ActionAllOrderStatus(Action):
 
@@ -337,7 +286,7 @@ class ActionAllOrderStatus(Action):
                 conn.close()
                 print('Database connection closed.')
         dispatcher.utter_message(text="Sure! I can help you with that. Could you provide the material number for the article you want to track?",buttons=buttons)
-        return [AllSlotsReset()]
+        return []
 
 class ActionOrderStatus(Action):
 
@@ -379,4 +328,77 @@ class ActionOrderStatus(Action):
                 print('Database connection closed.')
         dispatcher.utter_message(text=text)
 
+        return [SlotSet('orderid',None)]
+
+
+# class ActionResourcesList(Action):
+
+#     def name(self) -> Text:
+#         return "action_test"
+
+#     def run(self, dispatcher: CollectingDispatcher,
+#             tracker: Tracker,
+#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+#         data= [ { "title": "Sick Leave", "description": "Sick leave is time off from work that workers can use to stay home to address their health and safety needs without losing pay." }, { "title": "Earned Leave", "description": "Earned Leaves are the leaves which are earned in the previous year and enjoyed in the preceding years. " }, { "title": "Casual Leave", "description": "Casual Leave are granted for certain unforeseen situation or were you are require to go for one or two days leaves to attend to personal matters and not for vacation." }, { "title": "Flexi Leave", "description": "Flexi leave is an optional leave which one can apply directly in system at lease a week before." } ]
+
+#         message={ "payload": "collapsible", "data": data }
+
+#         dispatcher.utter_message(text="You can apply for below leaves",json_message=message)
+#         dispatcher.utter_message(text="-----------")
+#         # dispatcher.utter_message(attachment=message)
+#         return []
+
+class ActionCarousel(Action):
+    def name(self) -> Text:
+        return "action_carousel"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        data = {
+        "payload": 'cardsCarousel',
+        "data": [
+            {
+                "image": "https://b.zmtcdn.com/data/pictures/1/18602861/bd2825ec26c21ebdc945edb7df3b0d99.jpg",
+                "title": "Taftoon Bar & Kitchen",
+                "ratings": "4.5",
+            },
+            {
+                "image": "https://b.zmtcdn.com/data/pictures/4/18357374/661d0edd484343c669da600a272e2256.jpg",
+
+                "ratings": "4.0",
+                "title": "Veranda"
+            },
+            {
+                "image": "https://b.zmtcdn.com/data/pictures/4/18902194/e92e2a3d4b5c6e25fd4211d06b9a909e.jpg",
+
+                "ratings": "4.0",
+                "title": "145 The Mill"
+            },
+            {
+                "image": "https://b.zmtcdn.com/data/pictures/3/17871363/c53db6ba261c3e2d4db1afc47ec3eeb0.jpg",
+
+                "ratings": "4.0",
+                "title": "The Fatty Bao"
+            },
+        ]
+    }
+
+        dispatcher.utter_message(json_message=data)
+        return []
+
+class ActionCollapsible(Action):
+    def name(self) -> Text:
+        return "action_collapsible"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        data= [ { "title": "Sick Leave", "description": "Sick leave is time off from work that workers can use to stay home to address their health and safety needs without losing pay." }, { "title": "Earned Leave", "description": "Earned Leaves are the leaves which are earned in the previous year and enjoyed in the preceding years. " }, { "title": "Casual Leave", "description": "Casual Leave are granted for certain unforeseen situation or were you are require to go for one or two days leaves to attend to personal matters and not for vacation." }, { "title": "Flexi Leave", "description": "Flexi leave is an optional leave which one can apply directly in system at lease a week before." } ]
+
+        message={ "payload": "collapsible", "data": data }
+
+        dispatcher.utter_message(text="You can apply for below leaves",json_message=message)
         return []

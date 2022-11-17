@@ -88,6 +88,19 @@ nlu:
     - reinitiate
     - explore_more
     - more operations
+
+- intent: test
+  examples: |
+    - test
+    - test_intent
+    - test func
+
+- intent: collapse
+  examples: |
+    - collapsible
+    - collapse
+    - collapseble
+
 # - intent: Account Management
 #   examples: |
 #     - Account Management

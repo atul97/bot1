@@ -14,6 +14,8 @@ intents:
   - steps_to_place_an_order
   - order_status
   - explore_more
+  - test
+  - collapse
 
 entities:
 - uname
@@ -35,7 +37,7 @@ slots:
 responses:
   utter_greet:
   - text: |
-      - Hi, I am a virtual assistant from Acme here to help you.
+      - Hi, I am a virtual assistant Stepphanie here to help you.
       - May I know your name?
 
   utter_cheer_up:
@@ -52,7 +54,7 @@ responses:
   - text: "Bye"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  - text: "I am a bot."
 
   utter_another_spare:
   - buttons:
@@ -60,7 +62,7 @@ responses:
       title: Yes
     - payload: /deny
       title: No
-    text: "Would you like to check availability for another spare?"
+    text: "Check availability of another spare part"
 
   # utter_main_menu:
   # - text: Hi {uname}. I can help you with.
@@ -75,7 +77,7 @@ responses:
       title: Stepwise assistance on how to place an order
     - payload: Check Order Status
       title: Help you get information on your order
-    text: Hi {uname},I can help you with.
+    text: Hi,I can help you with.
 
   utter_steps_to_place_order:
   - text: "Check this video"
@@ -95,6 +97,8 @@ actions:
 - action_all_order_status
 - action_order_status
 - action_user_name
+- action_collapsible
+- action_carousel
 
 forms:
   uname_form:
