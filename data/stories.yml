@@ -61,7 +61,7 @@ stories:
 - story: test
   steps:
   - intent: test
-  - action: action_collapsible
+  - action: action_carousel
 
 - story: collapsible
   steps:
