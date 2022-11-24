@@ -67,6 +67,21 @@ stories:
   steps:
   - intent: collapse
   - action: action_collapsible
+
+- story: update_add_order_status
+  steps:
+  - intent: add_order_status
+  - action: action_add_order_status
+
+- story: update_order_visit
+  steps:
+  - intent: add_new_visit
+  - action: customer_name_form
+  - action: orderid_form
+  - action: activity_form
+  - action: type_form
+  - action: location_form
+  - action: action_add_customer_order
 # - story: sad path 1
 #   steps:
 #   - intent: greet

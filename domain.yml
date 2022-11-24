@@ -16,11 +16,17 @@ intents:
   - explore_more
   - test
   - collapse
+  - add_order_status
+  - add_new_visit
 
 entities:
 - uname
 - orderid
 - materialid
+- customer_name
+- activity
+- type
+- location
 
 slots:
   uname:
@@ -32,7 +38,18 @@ slots:
   materialid:
     type: text
     influence_conversation: false
-
+  customer_name:
+    type: text
+    influence_conversation: false
+  activity:
+    type: text
+    influence_conversation: false
+  type:
+    type: text
+    influence_conversation: false
+  location:
+    type: text
+    influence_conversation: false
 
 responses:
   utter_greet:
@@ -66,6 +83,20 @@ responses:
 
   # utter_main_menu:
   # - text: Hi {uname}. I can help you with.
+  utter_ask_orderid:
+  - text: "Please enter order id"
+
+  utter_ask_customer_name:
+  - text: "Please enter customer name"
+
+  utter_ask_activity:
+  - text: "Please enter activity"
+
+  utter_ask_type:
+  - text: "Please enter type"
+
+  utter_ask_location:
+  - text: "Please enter location"
 
   utter_main_menu:
   - buttons:
@@ -99,6 +130,8 @@ actions:
 - action_user_name
 - action_collapsible
 - action_carousel
+- action_add_order_status
+- action_add_customer_order
 
 forms:
   uname_form:
@@ -115,7 +148,28 @@ forms:
     required_slots:  
       materialid:
       - entity: materialid
-        type: from_text    
+        type: from_text
+  
+  customer_name_form:
+    required_slots:  
+      customer_name:
+      - entity: customer_name
+        type: from_text
+  activity_form:
+    required_slots:  
+      activity:
+      - entity: activity
+        type: from_text
+  type_form:
+    required_slots:  
+      type:
+      - entity: type
+        type: from_text
+  location_form:
+    required_slots:  
+      location:
+      - entity: location
+        type: from_text
 
 
 session_config:

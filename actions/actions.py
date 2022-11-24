@@ -30,44 +30,50 @@ class ActionUserName(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         conn = None
-        try:
-            print("-----------")
-            print(tracker.get_latest_input_channel())
-            # uname = tracker.get_slot("uname")
-            conn = psycopg2.connect(database ="rasa", user = "postgres",
-                        password = "123456", host = "localhost", 
-                        port = "5432")
-            print("Connection Successful to PostgreSQL")
 
-            cur = conn.cursor()
-            
-            query = f"""select distinct(customer_name) from visits;"""
-            cur.execute(query)
-            rows = cur.fetchall()
-            
-            buttons = []
-            
+        uname = tracker.get_slot("uname")
 
-            for x in rows:
-                print(x[0])
-                buttons.append({"title": x[0] , "payload": x[0]})
+        if uname is None:
 
             
-            cur.close()
-        except (Exception, psycopg2.DatabaseError) as error:
-            
-            print(error)
-        finally:
-            if conn is not None:
-                conn.close()
-                print('Database connection closed.')
-        if len(rows)==0:
-            dispatcher.utter_message(text=f"No user found")
-        else:
-            if tracker.get_latest_input_channel()=="twilio":
-                dispatcher.utter_message(text="Please write user name")
+            try:
+                print("-----------")
+                print(tracker.get_latest_input_channel())
+                # uname = tracker.get_slot("uname")
+                conn = psycopg2.connect(database ="rasa", user = "postgres",
+                            password = "123456", host = "localhost", 
+                            port = "5432")
+                print("Connection Successful to PostgreSQL")
+
+                cur = conn.cursor()
+                
+                query = f"""select distinct(customer_name) from visits;"""
+                cur.execute(query)
+                rows = cur.fetchall()
+                
+                buttons = []
+                
+
+                for x in rows:
+                    print(x[0])
+                    buttons.append({"title": x[0] , "payload": x[0]})
+
+                
+                cur.close()
+            except (Exception, psycopg2.DatabaseError) as error:
+                
+                print(error)
+            finally:
+                if conn is not None:
+                    conn.close()
+                    print('Database connection closed.')
+            if len(rows)==0:
+                dispatcher.utter_message(text=f"No user found")
             else:
-                dispatcher.utter_message(text="Please select user",buttons=buttons)
+                if tracker.get_latest_input_channel()=="twilio":
+                    dispatcher.utter_message(text="Please write user name")
+                else:
+                    dispatcher.utter_message(text="Please select user",buttons=buttons)
 
         return []
 
@@ -93,13 +99,20 @@ class ActionBreakdownVisit(Action):
             query = f"""select * from visits where customer_name = '{uname}';"""
             cur.execute(query)
             rows = cur.fetchall()
+
+            # query = f"""select * from visits where customer_name = '{uname}';"""
             
             buttons = []
             
 
             for x in rows:
                 print(x[1], x[2])
-                buttons.append({"title": f'{x[1]} {x[2]}' , "payload": x[3]})
+
+                query = f"""select * from order_details where order_id = '{x[2]}';"""
+                cur.execute(query)
+                rows_order_details = cur.fetchall()
+                # print(rows_order_details[0][2])
+                buttons.append({"title": f'{x[1]} {rows_order_details[0][2]}' , "payload": x[2]})
 
             
             cur.close()
@@ -401,4 +414,98 @@ class ActionCollapsible(Action):
         message={ "payload": "collapsible", "data": data }
 
         dispatcher.utter_message(text="You can apply for below leaves",json_message=message)
+        return []
+
+class ActionAddOrderStatus(Action):
+    def name(self) -> Text:
+        return "action_add_order_status"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+
+        conn = None
+        text = ""
+        try:
+            print("-----------")
+            orderid = tracker.get_slot("orderid")
+
+            conn = psycopg2.connect(database ="rasa", user = "postgres",
+                        password = "123456", host = "localhost", 
+                        port = "5432")
+            print("Connection Successful to PostgreSQL")
+
+            cur = conn.cursor()
+            
+            query = "insert into order_status values('523619723',6379856,'completed');"
+            cur.execute(query)
+            conn.commit()
+            
+            cur.close()
+        except (Exception, psycopg2.DatabaseError) as error:
+            
+            print(error)
+            dispatcher.utter_message(text="something went wrong,Not able to update")
+        finally:
+            if conn is not None:
+                conn.close()
+                print('Database connection closed.')
+
+
+        dispatcher.utter_message(text="Your data has updated")
+        return []
+
+
+class ActionAddCustomerOrder(Action):
+    def name(self) -> Text:
+        return "action_add_customer_order"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+
+        conn = None
+        text = ""
+        try:
+            print("-----------")
+            orderid = tracker.get_slot("orderid")
+
+            conn = psycopg2.connect(database ="rasa", user = "postgres",
+                        password = "123456", host = "localhost", 
+                        port = "5432")
+            print("Connection Successful to PostgreSQL")
+
+            cur = conn.cursor()
+
+            date_time = '20 November 2022, 18:00'
+
+            order_id = tracker.get_slot("orderid")
+            cutomer_name = tracker.get_slot("customer_name")
+            activity = tracker.get_slot("activity")
+            type = tracker.get_slot("type")
+            location = tracker.get_slot("location")
+
+            type_activity = f'{type} & {activity}'
+
+            query = f"insert into visits values('{cutomer_name}','{activity}','{order_id}');"
+            cur.execute(query)
+
+            query2 = f"insert into order_details values('{order_id}','{type_activity}','{date_time}','{location}');"
+            cur.execute(query2)
+            conn.commit()
+            
+            cur.close()
+        except (Exception, psycopg2.DatabaseError) as error:
+            
+            print(error)
+            dispatcher.utter_message(text="something went wrong,Not able to update")
+        finally:
+            if conn is not None:
+                conn.close()
+                print('Database connection closed.')
+
+
+        dispatcher.utter_message(text="Your data has updated")
         return []

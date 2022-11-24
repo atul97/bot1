@@ -101,6 +101,18 @@ nlu:
     - collapse
     - collapseble
 
+- intent: add_order_status
+  examples: |
+    - add order status
+    - order status add
+    - write status of the order
+
+- intent: add_new_visit
+  examples: |
+    - add_new_visit
+    - visit_customer
+    - customer_visit
+
 # - intent: Account Management
 #   examples: |
 #     - Account Management
